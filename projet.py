@@ -3,14 +3,15 @@ __author__ = 'Doryan Valentin Thomas'
 from tkinter import *
 from tkinter import ttk
 from os import *
+import os
 
 def charger_images(l = list, repertoire = str, titre = str):
     global Catalogue
     listewidget = Listbox(Catalogue)
     listewidget.bind('<<ListboxSelect>>', change_selection)
-    liste_fichier = listdir(repertoire)
+    liste_fichier = os.listdir(repertoire)
     for nomfichier in liste_fichier:
-        nomcomplet = repertoire + "/" + nomfichier
+        nomcomplet = repertoire + os.sep + nomfichier
         photo = PhotoImage(file = nomcomplet)
         l.append(photo)
         nouveau_nom = '.'.join(nomfichier.split('.')[:-1])  #On retire l'extension dans le nom du fichier
